@@ -1,0 +1,40 @@
+/*
+ * Write a program that calculates and prints the final value of a ten
+ * year, $10,000 investment whose annual return gradually declines from
+ * 2% to 1% over that term.
+ * 
+ * The interest will be compounded, presumably at the end of each year,
+ * and in addition to that the rate will reduced by (2%-1%)/9 each year. 
+ */
+
+#include <iostream>
+#include <iomanip>
+using namespace std; 
+
+double balanceAt10thYear (double initialInvestment)
+{
+	// initial interest is 2.0%
+	// at the 10th year, interest reduces to 1.0%
+	// each year the interest reduces by 1.0%/9
+	int year = 1; //This is a loop control variable
+	double balance = initialInvestment; 
+
+ 	cout << "Year 1: " << balance << endl; 
+	for ( year = 1; year <= 10; year++) //The loop starts from year one and then ends on the 1oth year
+	{
+		double interestRate = 0.02 - ((double)year - 1.0) * 0.01/9; //The interest rate changes each year
+		balance = balance * (1.0 + interestRate); //This is the formula to compound the interest to the balance 
+
+ 	cout << "Year " << year << ": " << balance << endl; 
+	}
+	return balance;
+}
+
+int main()
+{
+	cout.precision(9);
+	cout << "For the $10,000 initial investment the final balance at the 10th year is $" << balanceAt10thYear(10000.00) << " ." << endl;
+	return 0;
+}
+
+

@@ -1,0 +1,12 @@
+echo
+echo start to compile my first program
+g++ -v sentence.cpp -o sentence
+clear
+echo assignment1 can only be modified by the owner
+echo
+echo run my program to print 
+sentence
+echo
+echo after execution, remove the executable since it takes up too much storage
+rm sentence 
+

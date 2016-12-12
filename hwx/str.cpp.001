@@ -1,0 +1,53 @@
+/* 
+ * read a line of string and then,
+ * count the percentage of 'x' in the string 
+ * count the percentage of 'X' in the string
+ * e.g.
+ *     in string "Xerox is excellent.",  there are 2 'x', total length of this string is 19 characters, so percentage of 'x' in the string is 2/19 = 0.10526 
+ *     in string "Xerox is excellent.",  there are 1 'X', total length of this string is 19 characters, so percentage of 'X' in the string is 1/19 = 0.05263 
+ */
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int count_X_or_x(string inputStr) 
+{
+	int totalLen = 0;	// total length of the string
+	int totalX = 0;		// total length of 'X'
+	int totalx = 0;		// total length of 'x'
+	int i = 0;		// loop control variable
+
+	if (inputStr.empty()) {
+		cout << "The input string is empty." << endl;
+		return -1;
+	}
+
+	while (inputStr[i] != '\0') {
+		totalLen++;	// increase the total length of the string by 1
+		if (inputStr[i] == 'X')
+			totalX++;
+		if (inputStr[i] == 'x')
+			totalx++;
+		i++;
+	}
+
+	cout << "\tThe length of the string (i.e. total # of characters) is " << totalLen << endl;
+	cout << "\tThe # of character 'X' is " << totalX << endl;
+	cout << "\tThe percentage of 'X' in the string is " << double(totalX) / double(totalLen) << endl;
+	cout << "\tThe # of character 'x' is " << totalx << endl;
+	cout << "\tThe percentage of 'x' in the string is " << double(totalx) / double(totalLen) << endl;
+
+	return 0;
+}
+
+int main()
+{
+	string inputStr = "Exxon mobil is excellent; but Xerox is extremely innovative.";	// hold the input string
+
+	cout << inputStr << endl;
+	count_X_or_x(inputStr);
+
+	return 0;
+}
+

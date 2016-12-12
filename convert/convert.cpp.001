@@ -1,0 +1,80 @@
+/*
+ * Write a function that converts temperatures from Celsius to Fahrenheit and,
+ * given that water freezes and boils at 0 and 100 degrees Celsius,
+ * use it to derive those temperatures in Fahrenheit
+ *
+ * The freezing point of water is 0°C which equals to 32°F
+ * The boiling point of water is 100°C which equals to 212°F
+ * Therefore, (c-0)/(100-0) = (f-32)/(212-32) where c and f represents Celsius and Fahrenheit degree respectively
+ * so we can derive the following formulae: 
+ * 	c = 100 (f-32) / 180 = 5/9 (f-32)
+ * 	f = 32 + 180 c / 100 = 32 + 9/5 c
+ *
+ * No temperature should be below absolute zero. We simply return absolute zero if input value is lower than it. 
+ */
+
+#include <iostream>
+using namespace std;
+
+//
+// convert c to f
+// for any temperature lower than -273.15°C, we return -459.67°F as a placeholder
+//
+double c2f( double c )
+{
+	double f = -459.67;	// for a below-absolute-zero value, default return value is the absolute value
+
+	if ( c == 0.0 ) {
+		// since divide-by zero is not allowed, we treat this case specially
+		f = 32.0;
+	} else if ( c > -273.15 ) {
+		f = 32.0 + 9.0 / 5.0 * c;
+	}
+	return f;
+}
+
+//
+//convert f to c 
+//for any temperature lower than -459.67°F, we return -237.15°C as a placeholder
+//
+double f2c( double f )
+{
+	double c = -273.15:	// for a below-absolute-zero value, default return value is the absolute value
+
+	if ( f > -459.67 ) {
+		c = 5.0 / 9.0 * (f - 32.0);
+	}
+	return c;
+}
+
+int main()
+{
+	// this serves as a test program for c2f() and f2c()
+	//
+	double c[6] = {-273.16, -273.15, 0.0, 37.0, 100.0, 200.0};
+	double f[6] = {-459.68, -459.67, 32.0, 98.6, 212.0, 392.0};
+
+	for ( int i = 0; i<=5; i++ ) {
+		cout << "Convert Celsius to Fahrenheit: " << c[i] << " degree C = " << c2f( c[i] ) << " degree F.";
+		if ( c[i] < -273.15 ) {
+			cout << " * warning! Value out of range." << endl;
+		} else {
+			cout << endl;
+		}
+
+		// add a new line for better display
+		cout << endl;
+
+		cout << "Convert Fahrenheit to Celsius: " << f[i] << " degree F = " << f2c( f[i] ) << " degree C.";
+		if ( f[i] < -459.67 ) {
+			cout << " * warning! value out of range." << endl;
+		} else {
+			cout << endl;
+		}
+
+		// add a new line for better display
+		cout << endl;
+	}
+	return 0;
+}
+
